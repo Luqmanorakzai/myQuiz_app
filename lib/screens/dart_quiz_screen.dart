@@ -64,11 +64,9 @@ List<String> correctAnsSotre = [
   '.dart',
   'void Ftn(){}'
 ];
-
-
+List<String> storeTapedData = List<String>.filled(dartQuestions.length, '', growable: false);
+// intialize List of string according the length of dartQuestion and if the ques come more growable will increase
 class _DartQuizScreenState extends State<DartQuizScreen> {
-  // intialize List of string according the length of dartQuestion and if the ques come more growable will increase
-  List<String> storeTapedData = List<String>.filled(dartQuestions.length, '', growable: false);
 
   @override
   Widget build(BuildContext context) {
@@ -231,7 +229,7 @@ class _DartQuizScreenState extends State<DartQuizScreen> {
                 ElevatedButton(
                   onPressed: () {
                     int score = 0;
-                    for (int i = 0; i < correctAnsSotre.length; i++) {
+                    for (int i = 0; i <correctAnsSotre.length; i++) {
                       if (storeTapedData[i] == correctAnsSotre[i]) {
                         score++;
                       }

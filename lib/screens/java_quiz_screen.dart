@@ -1,10 +1,17 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:gap/gap.dart';
+import 'package:quize_app/screens/java_score_result_screen.dart';
+import 'package:quize_app/screens/starting_screen.dart';
+import 'package:quize_app/widget/costum_app_bar.dart';
 
 class JavaQuizScreen extends StatefulWidget {
   const JavaQuizScreen({super.key});
   @override
   State<JavaQuizScreen> createState() => _JavaQuizScreenState();
 }
+
 List<String> javaQuestions = [
   'What is Java primarily used for?',
   'Which of the following is a valid way to declare a variable in Java?',
@@ -83,11 +90,216 @@ List<String> correctJavaAnsStore = [
   'new MyClass();' // Answer for Q10
 ];
 
+List<String> javaTapedOptions =
+    List<String>.filled(javaQuestions.length, '', growable: false);
 
 class _JavaQuizScreenState extends State<JavaQuizScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: CostumAppBar(
+        appBarTitleText: 'Java Quiz',
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+        child: Column(
+          children: [
+            Expanded(
+              child: ListView.builder(
+                  itemCount: javaQuestions.length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                        height: 225,
+                        width: double.infinity,
+                        margin: EdgeInsets.only(bottom: 10),
+                        decoration:
+                            BoxDecoration(borderRadius: BorderRadius.circular(10)),
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 70,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                  color: Colors.grey.withOpacity(0.50),
+                                  borderRadius: BorderRadius.circular(16)),
+                              child: Center(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(right: 5),
+                                  child: Text(
+                                      textAlign: TextAlign.center,
+                                      'Q:${index + 1} ${javaQuestions[index]}'),
+                                ),
+                              ),
+                            ),
+                            Gap(5),
+                            Container(
+                              height: 150,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                color: Colors.grey.withOpacity(0.50),
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            javaTapedOptions[index] =
+                                                javaOption1[index];
+                                          });
+                                        },
+                                        child: Container(
+                                          height: 40,
+                                          width: 140,
+                                          decoration: BoxDecoration(
+                                              color: javaTapedOptions[index] ==
+                                                      javaOption1[index]
+                                                  ? Colors.purple.withOpacity(0.50)
+                                                  : Colors.white,
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
+                                          child: Center(
+                                              child:
+                                                  Text(
+                                                    textAlign: TextAlign.center,
+                                                    'A) ${javaOption1[index]}',
+                                                  style: TextStyle(fontSize: 12),
+                                                  )),
+                                        ),
+                                      ),
+                                      GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            javaTapedOptions[index] =
+                                            javaOption2[index];
+                                          });
+                                        },
+                                        child: Container(
+                                          height: 40,
+                                          width: 140,
+                                          decoration: BoxDecoration(
+                                              color: javaTapedOptions[index] ==
+                                                  javaOption2[index]
+                                                  ? Colors.purple.withOpacity(0.50)
+                                                  : Colors.white,
+                                              borderRadius:
+                                              BorderRadius.circular(10)),
+                                          child: Center(
+                                              child:
+                                              Text(
+                                                textAlign: TextAlign.center,
+                                                'B) ${javaOption2[index]}',
+                                                style: TextStyle(fontSize: 12),
+                                              )),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Gap(30),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            javaTapedOptions[index] =
+                                            javaOption3[index];
+                                          });
+                                        },
+                                        child: Container(
+                                          height: 40,
+                                          width: 140,
+                                          decoration: BoxDecoration(
+                                              color: javaTapedOptions[index] ==
+                                                  javaOption3[index]
+                                                  ? Colors.purple.withOpacity(0.50)
+                                                  : Colors.white,
+                                              borderRadius:
+                                              BorderRadius.circular(10)),
+                                          child: Center(
+                                              child:
+                                              Text(
+                                                textAlign: TextAlign.center,
+                                                'C) ${javaOption3[index]}',
+                                                style: TextStyle(fontSize: 12),
+                                              )),
+                                        ),
+                                      ),
+                                      GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            javaTapedOptions[index] =
+                                            javaOption4[index];
+                                          });
+                                        },
+                                        child: Container(
+                                          height: 40,
+                                          width: 140,
+                                          decoration: BoxDecoration(
+                                              color: javaTapedOptions[index] ==
+                                                  javaOption4[index]
+                                                  ? Colors.purple.withOpacity(0.50)
+                                                  : Colors.white,
+                                              borderRadius:
+                                              BorderRadius.circular(10)),
+                                          child: Center(
+                                              child:
+                                              Text(
+                                                textAlign: TextAlign.center,
+                                                'D) ${javaOption4[index]}',
+                                                style: TextStyle(fontSize: 12),
+                                              )),
+                                        ),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          ],
+                        ));
+                  }),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(onPressed: (){
+                  int score = 0;
+                  for(int i= 0; i<javaTapedOptions.length; i++)
+                    {
+                      if(javaTapedOptions[i]==correctJavaAnsStore[i])
+                        {
+                          score++;
+                        }
+                    }
+                  double javaPercentage = (score / correctJavaAnsStore.length)*100;
+                 Navigator.push(context, MaterialPageRoute(builder: (context){
+                   return JavaResultSctrreen(javaPercentages: javaPercentage);
+                 }));
+
+                setState(() {
+                  javaTapedOptions = List.filled(javaQuestions.length,'',growable: true);
+                });
+
+                }, child:Text('submit') ),
+
+
+                ElevatedButton(onPressed: (){
+                    setState(() {
+                      javaTapedOptions = List.filled(javaQuestions.length,'',growable: true );
+                    });
+
+                }, child:Text('Clear') ),
+              ],
+            )
+          ],
+        ),
+      ),
+
+    );
   }
 }
-
